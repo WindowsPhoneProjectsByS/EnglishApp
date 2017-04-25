@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="EnglishApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EnglishApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <FlipView x:Name="WordView">
+                <FlipView.ItemTemplate>
+                    <DataTemplate x:Name="WordItem">
+                        <Grid >
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Image Source="{Binding  UrlImage}"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding EnWord}" VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" FontSize="20"/>
+                                <TextBlock x:Name="PlWord" Grid.Column="1" Text="{Binding PlWord}" VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" FontSize="20"/>
+                            </Grid>
+                            
+                        </Grid>
+
+                    </DataTemplate>
+                </FlipView.ItemTemplate>
+            </FlipView>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <CheckBox x:ConnectionId='1' Content="Tłumaczenie" FontSize="18" x:Name="TransledRB" Grid.Column="0"
+                         HorizontalAlignment="Center"                                                              />
+
+            <CheckBox x:ConnectionId='2' Grid.Column="1" Content="AutoPrzewijanie" x:Name="AutoSliderRB"                                                                  />
+
+        </Grid>
+
+    </Grid>
+</Page>
+

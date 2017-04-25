@@ -1,0 +1,1 @@
+D:\Programowanie\VisualProjects\EnglishApp\EnglishApp\EnglishApp.csproj;neutral
