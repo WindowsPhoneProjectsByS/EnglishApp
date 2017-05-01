@@ -1,2 +1,2 @@
 # EnglishApp
-## Gałąż i18n - aplikacja z tłumaczeniem
+## Branch i18n - aplikacja z tłumaczeniem
