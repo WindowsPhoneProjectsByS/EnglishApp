@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -44,25 +46,34 @@ namespace EnglishApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             viewService = new FlipViewService();
-            PrepeareFlipViewNoPL();
-            
+            PrepareActualDate();
+            PrepeareFlipViewNoPL(); 
+        }
+
+        private void PrepareActualDate()
+        {
+            DateTime dt = DateTime.Now;
+            CultureInfo ci = CultureInfo.CurrentCulture;
+            ActualDate.Text = dt.ToString("d", ci);
         }
 
         private void TransledRB_Checked(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Checked");
+            int currpos = WordView.SelectedIndex;
             PrepareFlipViewPL();
+            WordView.SelectedIndex = currpos;
         }
 
         private void TransledRB_Unchecked(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("UnChecked");
+            int currpos = WordView.SelectedIndex;
             PrepeareFlipViewNoPL();
+            WordView.SelectedIndex = currpos;
         }
 
         public void PrepeareFlipViewNoPL()
         {
-            viewService.initItemsWithoutPL();
+            viewService.initItemsWithoutTranslation();
             WordView.ItemsSource = viewService.Items;
         }
 
