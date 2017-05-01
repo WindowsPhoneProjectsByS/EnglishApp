@@ -20,6 +20,7 @@
   </Prerequisites>
   <Resources>
     <Resource Language="EN-US" />
+    <Resource Language="PL" />
   </Resources>
   <Applications>
     <Application Id="App" Executable="EnglishApp.exe" EntryPoint="EnglishApp.App">

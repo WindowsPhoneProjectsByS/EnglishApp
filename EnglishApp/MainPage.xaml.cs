@@ -50,19 +50,23 @@ namespace EnglishApp
 
         private void TransledRB_Checked(object sender, RoutedEventArgs e)
         {
+            int currpos = WordView.SelectedIndex;
             Debug.WriteLine("Checked");
             PrepareFlipViewPL();
+            WordView.SelectedIndex = currpos;
         }
 
         private void TransledRB_Unchecked(object sender, RoutedEventArgs e)
         {
+            int currpos = WordView.SelectedIndex;
             Debug.WriteLine("UnChecked");
             PrepeareFlipViewNoPL();
+            WordView.SelectedIndex = currpos;
         }
 
         public void PrepeareFlipViewNoPL()
         {
-            viewService.initItemsWithoutPL();
+            viewService.initItemsWithoutTranslation();
             WordView.ItemsSource = viewService.Items;
         }
 

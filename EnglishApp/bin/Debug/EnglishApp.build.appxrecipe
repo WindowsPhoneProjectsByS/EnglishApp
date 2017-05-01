@@ -49,8 +49,11 @@
     <AppxPackagedFile Include="D:\Programowanie\VisualProjects\EnglishApp\EnglishApp\Assets\Images\plane.jpg">
       <PackagePath>Assets\Images\plane.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Programowanie\VisualProjects\EnglishApp\EnglishApp\Assets\Images\truck.jpg">
-      <PackagePath>Assets\Images\truck.jpg</PackagePath>
+    <AppxPackagedFile Include="D:\Programowanie\VisualProjects\EnglishApp\EnglishApp\Assets\Images\truck-en-us.jpg">
+      <PackagePath>Assets\Images\truck-en-us.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Programowanie\VisualProjects\EnglishApp\EnglishApp\Assets\Images\truck-eu.jpg">
+      <PackagePath>Assets\Images\truck-eu.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Programowanie\VisualProjects\EnglishApp\EnglishApp\Assets\Images\watch.jpg">
       <PackagePath>Assets\Images\watch.jpg</PackagePath>
