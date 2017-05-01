@@ -53,14 +53,13 @@ namespace EnglishApp
         private void PrepareActualDate()
         {
             DateTime dt = DateTime.Now;
-            CultureInfo ci = new CultureInfo("de-DE");
+            CultureInfo ci = CultureInfo.CurrentCulture;
             ActualDate.Text = dt.ToString("d", ci);
         }
 
         private void TransledRB_Checked(object sender, RoutedEventArgs e)
         {
             int currpos = WordView.SelectedIndex;
-            Debug.WriteLine("Checked");
             PrepareFlipViewPL();
             WordView.SelectedIndex = currpos;
         }
@@ -68,7 +67,6 @@ namespace EnglishApp
         private void TransledRB_Unchecked(object sender, RoutedEventArgs e)
         {
             int currpos = WordView.SelectedIndex;
-            Debug.WriteLine("UnChecked");
             PrepeareFlipViewNoPL();
             WordView.SelectedIndex = currpos;
         }
