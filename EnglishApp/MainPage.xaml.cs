@@ -45,10 +45,10 @@ namespace EnglishApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
             PrepareActualDate();
             PrepareButtonContent();
             PrepareProperLayout();
+            PrepeareFlipViewNoTranslation();
         }
 
         private void PrepareActualDate()
@@ -70,37 +70,36 @@ namespace EnglishApp
             if (CultureInfo.CurrentCulture.Name == "en-US")
             {
                 viewService = new FlipViewService(false);
-                PrepeareFlipViewNoPL();
+                
                 TransledRB.Visibility = Visibility.Collapsed;
             }
             else
             {
                 viewService = new FlipViewService(true);
-                PrepeareFlipViewNoPL();
             }
         }
 
         private void TransledRB_Checked(object sender, RoutedEventArgs e)
         {
             int currpos = WordView.SelectedIndex;
-            PrepareFlipViewPL();
+            PrepareFlipViewWitTranslation();
             WordView.SelectedIndex = currpos;
         }
 
         private void TransledRB_Unchecked(object sender, RoutedEventArgs e)
         {
             int currpos = WordView.SelectedIndex;
-            PrepeareFlipViewNoPL();
+            PrepeareFlipViewNoTranslation();
             WordView.SelectedIndex = currpos;
         }
 
-        public void PrepeareFlipViewNoPL()
+        public void PrepeareFlipViewNoTranslation()
         {
             viewService.initItemsWithoutTranslation();
             WordView.ItemsSource = viewService.Items;
         }
 
-        public void PrepareFlipViewPL()
+        public void PrepareFlipViewWitTranslation()
         {
             viewService.initItems();
             WordView.ItemsSource = viewService.Items;
