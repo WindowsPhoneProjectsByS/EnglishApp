@@ -45,9 +45,10 @@ namespace EnglishApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            viewService = new FlipViewService();
             PrepareActualDate();
-            PrepeareFlipViewNoPL(); 
+            PrepareButtonContent();
+            PrepareProperLayout();
+            PrepeareFlipViewNoTranslation();
         }
 
         private void PrepareActualDate()
@@ -57,27 +58,48 @@ namespace EnglishApp
             ActualDate.Text = dt.ToString("d", ci);
         }
 
+        private void PrepareButtonContent()
+        {
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            AutoSliderRB.Content = loader.GetString("SliderCheckButton");
+        }
+
+        private void PrepareProperLayout()
+        {
+            if (CultureInfo.CurrentCulture.Name == "en-US")
+            {
+                viewService = new FlipViewService(false);
+                
+                TransledRB.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                viewService = new FlipViewService(true);
+            }
+        }
+
         private void TransledRB_Checked(object sender, RoutedEventArgs e)
         {
             int currpos = WordView.SelectedIndex;
-            PrepareFlipViewPL();
+            PrepareFlipViewWitTranslation();
             WordView.SelectedIndex = currpos;
         }
 
         private void TransledRB_Unchecked(object sender, RoutedEventArgs e)
         {
             int currpos = WordView.SelectedIndex;
-            PrepeareFlipViewNoPL();
+            PrepeareFlipViewNoTranslation();
             WordView.SelectedIndex = currpos;
         }
 
-        public void PrepeareFlipViewNoPL()
+        public void PrepeareFlipViewNoTranslation()
         {
             viewService.initItemsWithoutTranslation();
             WordView.ItemsSource = viewService.Items;
         }
 
-        public void PrepareFlipViewPL()
+        public void PrepareFlipViewWitTranslation()
         {
             viewService.initItems();
             WordView.ItemsSource = viewService.Items;
@@ -87,7 +109,6 @@ namespace EnglishApp
 
         private void AutoSliderRB_Checked(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Checked dla autoprzewijania");
             timer.Tick += ChangeItem;
             timer.Start();
         }
@@ -104,15 +125,12 @@ namespace EnglishApp
 
             int newIndex = WordView.SelectedIndex + 1;
 
-            Debug.WriteLine("Wybrany indeks: " + newIndex + "/" + totalItems);
-
             if (newIndex >= totalItems)
             {
                 newIndex = 0;
             }
 
             WordView.SelectedIndex = newIndex;
-            Debug.WriteLine("Powinno pyknąć jeśli nie pyka to jest problem");
         }
 
     }

@@ -13,10 +13,16 @@ namespace EnglishApp.Services
     {
         public ObservableCollection<Item> Items;
         public Dictionary<String, String> translationItems;
+        public Dictionary<String, String> locatedImages;
 
-        public FlipViewService()
+        public FlipViewService(bool isTranslated)
         {
-            initTranslationItems();     
+            if (isTranslated)
+            {
+                initTranslationItems();
+            }
+
+            GetProperImagesPath();
         }
 
         public void initTranslationItems()
@@ -61,6 +67,15 @@ namespace EnglishApp.Services
             translationItems.Add("TruckImageName", item);
         }
 
+        public void GetProperImagesPath()
+        {
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            locatedImages = new Dictionary<string, string>();
+
+            var item = loader.GetString("TruckImageName");
+            locatedImages.Add("TruckImageName", item);
+        }
+
         public void initItems()
         {
             Items = new ObservableCollection<Item>();
@@ -72,7 +87,7 @@ namespace EnglishApp.Services
             Items.Add(new Item("mermaid.jpg", "Mermaid", translationItems["Mermaid"]));
             Items.Add(new Item("motorbike.jpg", "Motorbike", translationItems["Motorbike"]));
             Items.Add(new Item("plane.jpg", "Plane", translationItems["Plane"]));
-            Items.Add(new Item(translationItems["TruckImageName"], "Truck", translationItems["Truck"]));
+            Items.Add(new Item(locatedImages["TruckImageName"], "Truck", translationItems["Truck"]));
             Items.Add(new Item("watch.jpg", "Watch", translationItems["Watch"]));
         }
 
@@ -87,7 +102,7 @@ namespace EnglishApp.Services
             Items.Add(new Item("mermaid.jpg", "Mermaid", ""));
             Items.Add(new Item("motorbike.jpg", "Motorbike", ""));
             Items.Add(new Item("plane.jpg", "Plane", ""));
-            Items.Add(new Item(translationItems["TruckImageName"], "Truck", ""));
+            Items.Add(new Item(locatedImages["TruckImageName"], "Truck", ""));
             Items.Add(new Item("watch.jpg", "Watch", ""));
         }
 
