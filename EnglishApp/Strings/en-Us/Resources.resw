@@ -123,36 +123,6 @@
   <data name="SliderCheckButton" xml:space="preserve">
     <value>Autoslide</value>
   </data>
-  <data name="TranslationCar" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationChess" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationDog" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationFire" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationGuitar" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationMermaid" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationMotorbike" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationPlane" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationTruck" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TranslationWatch" xml:space="preserve">
-    <value />
-  </data>
   <data name="TruckImageName" xml:space="preserve">
     <value>truck-en-us.jpg</value>
   </data>
